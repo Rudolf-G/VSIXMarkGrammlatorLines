@@ -26,7 +26,7 @@ namespace VSIXMarkGrammlatorLines {
       /// <param name="registry">Classification registry.</param>
       internal GrammlatorClassifier(IClassificationTypeRegistryService registry)
          {
-         this.classificationType = registry.GetClassificationType("GrammlatorClassifier");
+         this.classificationType = registry.GetClassificationType("MarkGrammlatorLines");
          }
 
       #region IClassifier
@@ -50,22 +50,22 @@ namespace VSIXMarkGrammlatorLines {
       /// </summary>
       /// <remarks>
       /// This method scans the given SnapshotSpan for potential matches for this classification.
-      /// In this instance, it classifies each occurenc of "//|"
+      /// In this instance, it classifies each occurenc of "//|" at the beginning of  line (ignoring whitespace)
       /// </remarks>
       /// <param name="span">The span currently being classified.</param>
       /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification.</returns>
       public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
          {
-         ITextSnapshot xxx = span.Snapshot;
+         ITextSnapshot text = span.Snapshot;
 
          Int32 pos = -1;
-         for (int i=span.Start; i<span.End-3; i++)
+         for (int i = span.Start; i < span.End - 3; i++)
             {
-            if (xxx[i] == '/' && xxx[i + 1] == '/' && xxx[i + 2] == '|')
-               {
+            if (char.IsWhiteSpace(text[i]))
+               continue;
+            if (text[i] == '/' && text[i + 1] == '/' && text[i + 2] == '|')
                pos = i;
-               break;
-               }
+            break;
             }
 
          if (pos < 0)

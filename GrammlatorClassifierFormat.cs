@@ -10,8 +10,8 @@ namespace VSIXMarkGrammlatorLines {
    /// and is underlined.
    /// </summary>
    [Export(typeof(EditorFormatDefinition))]
-   [ClassificationType(ClassificationTypeNames = "GrammlatorClassifier")]
-   [Name("GrammlatorClassifier")]
+   [ClassificationType(ClassificationTypeNames = "MarkGrammlatorLines")]
+   [Name("MarkGrammlatorLines")]
    [UserVisible(true)] // This should be visible to the end user
    [Order(Before = Priority.Default)] // Set the priority to be after the default classifiers
    internal sealed class GrammlatorClassifierFormat: ClassificationFormatDefinition {
@@ -21,7 +21,7 @@ namespace VSIXMarkGrammlatorLines {
       public GrammlatorClassifierFormat()
          {
          // colors see https://docs.microsoft.com/de-de/dotnet/api/system.windows.media.colors?view=netcore-3.1
-         this.DisplayName = "GrammlatorClassifier"; // Human readable version of the name
+         this.DisplayName = "MarkGrammlatorLines"; // Human readable version of the name
          this.BackgroundColor = Colors.PowderBlue;
          // this.TextDecorations = System.Windows.TextDecorations.Underline;
          }
