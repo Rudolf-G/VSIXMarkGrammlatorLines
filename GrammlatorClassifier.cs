@@ -69,14 +69,14 @@ namespace VSIXMarkGrammlatorLines {
             }
 
          if (pos < 0)
-            return EmptyList;
+            return new List<ClassificationSpan>();
 
          return new List<ClassificationSpan>() {
             new ClassificationSpan(new SnapshotSpan(span.Snapshot, new Span(pos, 3)), this.classificationType)
             };
          }
 
-      static List<ClassificationSpan> EmptyList = new List<ClassificationSpan>();
+      // static List<ClassificationSpan> EmptyList = new List<ClassificationSpan>();
 
       #endregion
       }
