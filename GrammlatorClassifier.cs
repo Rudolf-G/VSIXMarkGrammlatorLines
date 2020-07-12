@@ -9,6 +9,7 @@ namespace VSIXMarkGrammlatorLines {
     * Advice how to program this extension: 
     * https://docs.microsoft.com/en-us/visualstudio/extensibility/language-service-and-editor-extension-points?view=vs-2019
     * https://docs.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor?view=vs-2019
+    * https://docs.microsoft.com/en-us/visualstudio/extensibility/walkthrough-highlighting-text?view=vs-2019
     */
 
    /// <summary>
@@ -59,7 +60,7 @@ namespace VSIXMarkGrammlatorLines {
          ITextSnapshot text = span.Snapshot;
 
          Int32 pos = -1;
-         for (int i = span.Start; i < span.End - 3; i++)
+         for (int i = span.Start; i < span.End - 2; i++)
             {
             if (char.IsWhiteSpace(text[i]))
                continue;
@@ -72,7 +73,7 @@ namespace VSIXMarkGrammlatorLines {
             return new List<ClassificationSpan>();
 
          return new List<ClassificationSpan>() {
-            new ClassificationSpan(new SnapshotSpan(span.Snapshot, new Span(pos, 3)), this.classificationType)
+            new ClassificationSpan(new SnapshotSpan(text, new Span(pos, 3)), this.classificationType)
             };
          }
 
