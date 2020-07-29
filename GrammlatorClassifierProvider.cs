@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.Utilities;
 namespace VSIXMarkGrammlatorLines {
    /*
     * Projekt angelegt gemäß https://docs.microsoft.com/en-us/visualstudio/extensibility/creating-an-extension-with-an-editor-item-template?view=vs-2019
-    * abgeändert, so dass die grammlator Zeilenmarkierungen farbig hervorgehoen werden
+    * abgeändert, so dass die grammlator Zeilenmarkierungen farbig hervorgehoben werden
     */
 
 
